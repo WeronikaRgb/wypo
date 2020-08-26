@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    {{'action_decline_borrowing'|trans}}
+{% endblock %}
+
+
+{% block body %}
+
+                <h1>{{'action_decline_borrowing'|trans}}</h1>
+
+                <div class="invisible">
+                    {{ form_start(form, {method: 'DELETE', action: url('borrowing_decline', {id: borrowing.id}) }) }}
+                    {{ form_widget(form) }}
+                </div>
+                <div class="form-group row float-sm-right">
+                    <input type="submit" value="{{'action_decline_borrowing'|trans}}" class="btn btn-primary" >
+                </div>
+
+                <div class="form-group row float-sm-left">
+                    <a class="btn btn-outline-primary" href="{{ url('manage_borrowing') }}" title="{{ 'action_back_to_list'|trans }}">
+                        {{ 'action_back_to_list'|trans }}
+                    </a>
+                </div>
+
+                {{ form_end(form) }}
+{% endblock %}

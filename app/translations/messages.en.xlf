@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="label_actions">
+                <source>label_actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="label_id">
+                <source>label_id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="label_title">
+                <source>label_title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="label_content">
+                <source>label_content</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="label_tags">
+                <source>label_tags</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="message_empty_list">
+                <source>message_empty_list</source>
+                <target>Empty list.</target>
+            </trans-unit>
+            <trans-unit id="action_back_to_list">
+                <source>action_back_to_list</source>
+                <target>Back to list</target>
+            </trans-unit>
+            <trans-unit id="action_view">
+                <source>action_view</source>
+                <target>View</target>
+            </trans-unit>
+            <trans-unit id="title_book_list">
+                <source>title_book_list</source>
+                <target>Books list</target>
+            </trans-unit>
+            <trans-unit id="title_book_details">
+                <source>title_book_details</source>
+                <target>Book</target>
+            </trans-unit>
+            <trans-unit id="label_category">
+                <source>label_category</source>
+                <target>Category</target>
+            </trans-unit>
+            <trans-unit id="name_category_list">
+                <source>name_category_list</source>
+                <target>Categories list</target>
+            </trans-unit>
+            <trans-unit id="label_name">
+                <source>label_name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="name_category_details">
+                <source>name_category_details</source>
+                <target>Category</target>
+            </trans-unit>
+            <trans-unit id="action_edit">
+                <source>action_edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="action_delete">
+                <source>action_delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="action_save">
+                <source>action_save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="title_book_delete">
+                <source>title_book_delete</source>
+                <target>Are you sure you want to delete this book?</target>
+            </trans-unit>
+            <trans-unit id="title_book_edit">
+                <source>title_book_edit</source>
+                <target>Book edit</target>
+            </trans-unit>
+            <trans-unit id="name_category_edit">
+                <source>name_category_edit</source>
+                <target>Category edit</target>
+            </trans-unit>
+            <trans-unit id="name_category_delete">
+                <source>name_category_delete</source>
+                <target>Are you sure you want to delete this category?</target>
+            </trans-unit>
+            <trans-unit id="borrowing_create">
+                <source>borrowing_create</source>
+                <target>Borrowing</target>
+            </trans-unit>
+            <trans-unit id="label_books">
+                <source>label_books</source>
+                <target>Books</target>
+            </trans-unit>
+            <trans-unit id="name_category_create">
+                <source>name_category_create</source>
+                <target>Category create</target>
+            </trans-unit>
+            <trans-unit id="title_book_create">
+                <source>title_book_create</source>
+                <target>Book create</target>
+            </trans-unit>
+            <trans-unit id="action_login">
+                <source>action_login</source>
+                <target>Sign in</target>
+            </trans-unit>
+            <trans-unit id="action_logout">
+                <source>action_logout</source>
+                <target>Log out</target>
+            </trans-unit>
+            <trans-unit id="user_list">
+                <source>user_list</source>
+                <target>Users</target>
+            </trans-unit>
+            <trans-unit id="label_email">
+                <source>label_email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="user_edit">
+                <source>user_edit</source>
+                <target>Edit User</target>
+            </trans-unit>
+            <trans-unit id="label_password">
+                <source>label_password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="label_nick">
+                <source>label_nick</source>
+                <target>Nick</target>
+            </trans-unit>
+            <trans-unit id="label_comment">
+                <source>label_comment</source>
+                <target>Comment</target>
+            </trans-unit>
+            <trans-unit id="choice_book">
+                <source>choice_book</source>
+                <target>Choose book</target>
+            </trans-unit>
+            <trans-unit id="label_none">
+                <source>label_none</source>
+                <target>Choose </target>
+            </trans-unit>
+            <trans-unit id="manage_borrowings">
+                <source>manage_borrowings</source>
+                <target>Manage borrowings </target>
+            </trans-unit>
+            <trans-unit id="action_accept_borrowing">
+                <source>action_accept_borrowing</source>
+                <target>Accept </target>
+            </trans-unit>
+            <trans-unit id="action_decline_borrowing">
+                <source>action_decline_borrowing</source>
+                <target> Decline </target>
+            </trans-unit>
+            <trans-unit id="label_created_at">
+                <source>label_created_at</source>
+                <target> Created at </target>
+            </trans-unit>
+            <trans-unit id="label_CreatedAt">
+                <source>label_CreatedAt</source>
+                <target> Created at </target>
+            </trans-unit>
+            <trans-unit id="book_create">
+                <source>book_create</source>
+                <target> Create book </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

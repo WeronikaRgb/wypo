@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    {{'manage_borrowings'|trans}}
+{% endblock %}
+
+
+{% block body %}
+                <h1>{{'manage_borrowings'|trans}}</h1>
+
+                {% if pagination is defined and pagination.items|length %}
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>{{ 'label_comment'|trans }}</th>
+                            <th>{{ 'label_books'|trans }}</th>
+                            <th>{{ 'label_actions'|trans }}</th>
+                        </tr>
+                        <tbody>
+
+                        {% for borrowing in pagination.items %}
+                            {% if borrowing.isExecuted == 0 %}
+                                <tr>
+                                    <td>{{ borrowing.comment }} </td>
+                                    <td>{{ borrowing.book.title }}</td>
+                                    <td>
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <a href="{{ url('borrowing_accept', {id: borrowing.id}) }}" title="{{'action_accept_borrowing'|trans}}">
+                                                {{'action_accept_borrowing'|trans}}
+                                            </a>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <a href="{{ url('borrowing_decline', {id: borrowing.id}) }}" title="{{'action_decline_borrowing'|trans}}">
+                                                {{'action_decline_borrowing'|trans}}
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                    <div class="navigation text-center">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                {% else %}
+                    {{ 'message_empty_list'|trans }}
+                {% endif %}
+{% endblock %}
