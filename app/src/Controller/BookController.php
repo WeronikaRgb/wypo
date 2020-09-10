@@ -8,6 +8,9 @@ namespace App\Controller;
 use App\Entity\Book;
 use App\Form\BookType;
 use App\Repository\BookRepository;
+use DateTime;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -25,11 +28,11 @@ class BookController extends AbstractController
     /**
      * Index action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request        HTTP request
-     * @param \App\Repository\BookRepository            $bookRepository Book repository
-     * @param \Knp\Component\Pager\PaginatorInterface   $paginator      Paginator
+     * @param Request            $request        HTTP request
+     * @param BookRepository     $bookRepository Book repository
+     * @param PaginatorInterface $paginator      Paginator
      *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     * @return Response HTTP response
      *
      * @Route(
      *     "/",
@@ -54,9 +57,9 @@ class BookController extends AbstractController
     /**
      * Show action.
      *
-     * @param \App\Entity\Book $book Book entity
+     * @param Book $book Book entity
      *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     * @return Response HTTP response
      *
      * @Route(
      *     "/{id}",
@@ -76,13 +79,13 @@ class BookController extends AbstractController
     /**
      * Create action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request        HTTP request
-     * @param \App\Repository\BookRepository            $bookRepository Book repository
+     * @param Request        $request        HTTP request
+     * @param BookRepository $bookRepository Book repository
      *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     * @return Response HTTP response
      *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws ORMException
+     * @throws OptimisticLockException
      *
      * @Route(
      *     "/create",
@@ -97,6 +100,7 @@ class BookController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $book->setCreatedAt(new DateTime());
             $bookRepository->save($book);
             $this->addFlash('success', 'message_created_successfully');
 
@@ -112,14 +116,14 @@ class BookController extends AbstractController
     /**
      * Edit action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request        HTTP request
-     * @param \App\Entity\Book                          $book           Book entity
-     * @param \App\Repository\BookRepository            $bookRepository Book repository
+     * @param Request        $request        HTTP request
+     * @param Book           $book           Book entity
+     * @param BookRepository $bookRepository Book repository
      *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     * @return Response HTTP response
      *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws ORMException
+     * @throws OptimisticLockException
      *
      * @Route(
      *     "/{id}/edit",
@@ -152,14 +156,14 @@ class BookController extends AbstractController
     /**
      * Delete action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request        HTTP request
-     * @param \App\Entity\Book                          $book           Book entity
-     * @param \App\Repository\BookRepository            $bookRepository Book repository
+     * @param Request        $request        HTTP request
+     * @param Book           $book           Book entity
+     * @param BookRepository $bookRepository Book repository
      *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     * @return Response HTTP response
      *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws ORMException
+     * @throws OptimisticLockException
      *
      * @Route(
      *     "/{id}/delete",

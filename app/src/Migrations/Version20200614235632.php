@@ -1,6 +1,9 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * Migration.
+ */
 
 namespace DoctrineMigrations;
 
@@ -12,11 +15,19 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20200614235632 extends AbstractMigration
 {
+    /**
+     * @return string
+     */
     public function getDescription() : string
     {
         return '';
     }
 
+    /**
+     * @param Schema $schema
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
@@ -27,6 +38,11 @@ final class Version20200614235632 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_4A1B2A9212469DE2 ON books (category_id)');
     }
 
+    /**
+     * @param Schema $schema
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs

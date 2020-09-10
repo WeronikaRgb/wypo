@@ -28,6 +28,8 @@ class BorrowingType extends AbstractType
 
     /**
      * BorrowingType constructor.
+     *
+     * @param BookService $bookService
      */
     public function __construct(BookService $bookService)
     {
@@ -35,8 +37,8 @@ class BorrowingType extends AbstractType
     }
 
     /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder The form builder
-     * @param array                                        $options The options
+     * @param FormBuilderInterface $builder The form builder
+     * @param array                $options The options
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -85,7 +87,7 @@ class BorrowingType extends AbstractType
     /**
      * Configures the options for this type.
      *
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver The resolver for the options
+     * @param OptionsResolver $resolver The resolver for the options
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -94,6 +96,9 @@ class BorrowingType extends AbstractType
         $resolver->setAllowedTypes('show_all_books', 'bool');
     }
 
+    /**
+     * @return string
+     */
     public function getBlockPrefix(): string
     {
         return 'borrowing';

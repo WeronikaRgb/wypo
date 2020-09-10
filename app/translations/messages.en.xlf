@@ -18,10 +18,6 @@
                 <source>label_content</source>
                 <target>Content</target>
             </trans-unit>
-            <trans-unit id="label_tags">
-                <source>label_tags</source>
-                <target>Tags</target>
-            </trans-unit>
             <trans-unit id="message_empty_list">
                 <source>message_empty_list</source>
                 <target>Empty list.</target>
@@ -166,6 +162,78 @@
                 <source>book_create</source>
                 <target> Create book </target>
             </trans-unit>
+            <trans-unit id="accept_borrowings">
+                <source>accept_borrowings</source>
+                <target> Accept </target>
+            </trans-unit>
+             <trans-unit id="message_borrowing_accept">
+                 <source>message_borrowing_accept</source>
+                 <target> Accepted </target>
+             </trans-unit>
+             <trans-unit id="decline_borrowings">
+                 <source>decline_borrowings</source>
+                 <target> Decline </target>
+             </trans-unit>
+             <trans-unit id="message_borrowing_decline">
+                 <source>message_borrowing_decline</source>
+                 <target> Declined </target>
+             </trans-unit>
+             <trans-unit id="message_created_successfully">
+                 <source>message_created_successfully</source>
+                 <target> Created successfully </target>
+             </trans-unit>
+             <trans-unit id="message_updated_successfully">
+                 <source>message_updated_successfully</source>
+                 <target> Updated successfully </target>
+             </trans-unit>
+             <trans-unit id="message_deleted_successfully">
+                 <source>message_deleted_successfully</source>
+                 <target> Deleted successfully </target>
+             </trans-unit>
+               <trans-unit id="label_amount">
+                   <source>label_amount</source>
+                   <target> Amount </target>
+               </trans-unit>
+                <trans-unit id="books_title">
+                    <source>books_title</source>
+                    <target> Books </target>
+                </trans-unit>
+                <trans-unit id="message_item_not_found">
+                    <source>message_item_not_found</source>
+                    <target> Not found! </target>
+                </trans-unit>
+                 <trans-unit id="log_in">
+                     <source>log_in</source>
+                     <target> Please log in </target>
+                 </trans-unit>
+                 <trans-unit id="sign_in">
+                     <source>sign_in</source>
+                     <target> Sign in </target>
+                 </trans-unit>
+                 <trans-unit id="message_borrowing_send">
+                     <source>message_borrowing_send</source>
+                     <target> Borrowing send </target>
+                 </trans-unit>
+                 <trans-unit id="category_create">
+                     <source>category_create</source>
+                     <target> Create category </target>
+                 </trans-unit>
+                 <trans-unit id="manage_borrowing">
+                     <source>manage_borrowing</source>
+                     <target> Manage borrowing </target>
+                 </trans-unit>
+                 <trans-unit id="category_index">
+                     <source>category_index</source>
+                     <target> Categories </target>
+                 </trans-unit>
+                 <trans-unit id="book_index">
+                     <source>book_index</source>
+                     <target> Books </target>
+                 </trans-unit>
+                 <trans-unit id="user_index">
+                     <source>user_index</source>
+                     <target> User </target>
+                 </trans-unit>
         </body>
     </file>
 </xliff>

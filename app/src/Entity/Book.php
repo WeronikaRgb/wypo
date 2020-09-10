@@ -6,6 +6,7 @@
 namespace App\Entity;
 
 use App\Repository\BookRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -64,6 +65,8 @@ class Book
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @Assert\Positive()
      */
     private $amount;
 
@@ -72,6 +75,9 @@ class Book
      */
     private $createdAt;
 
+    /**
+     * Book constructor.
+     */
     public function __construct()
     {
         $this->borrowings = new ArrayCollection();
@@ -107,11 +113,19 @@ class Book
         $this->title = $title;
     }
 
+    /**
+     * @return Category|null
+     */
     public function getCategory(): ?Category
     {
         return $this->category;
     }
 
+    /**
+     * @param Category|null $category
+     *
+     * @return $this
+     */
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
@@ -127,6 +141,11 @@ class Book
         return $this->borrowings;
     }
 
+    /**
+     * @param Borrowing $borrowing
+     *
+     * @return $this
+     */
     public function addBorrowing(Borrowing $borrowing): self
     {
         if (!$this->borrowings->contains($borrowing)) {
@@ -137,6 +156,11 @@ class Book
         return $this;
     }
 
+    /**
+     * @param Borrowing $borrowing
+     *
+     * @return $this
+     */
     public function removeBorrowing(Borrowing $borrowing): self
     {
         if ($this->borrowings->contains($borrowing)) {
@@ -150,22 +174,34 @@ class Book
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getAmount(): ?int
     {
         return $this->amount;
     }
 
+    /**
+     * @param int|null $amount
+     */
     public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): void
+    /**
+     * @param DateTimeInterface $createdAt
+     */
+    public function setCreatedAt(DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
     }

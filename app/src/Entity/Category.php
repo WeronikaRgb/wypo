@@ -101,6 +101,11 @@ class Category
         return $this->books;
     }
 
+    /**
+     * @param Book $book
+     *
+     * @return $this
+     */
     public function addBook(Book $book): self
     {
         if (!$this->books->contains($book)) {
@@ -111,6 +116,11 @@ class Category
         return $this;
     }
 
+    /**
+     * @param Book $book
+     *
+     * @return $this
+     */
     public function removeBook(Book $book): self
     {
         if ($this->books->contains($book)) {

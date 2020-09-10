@@ -31,9 +31,11 @@
                         <a href="{{ url('category_edit', {id: category.id}) }}" title="{{ 'action_edit'|trans }}">
                             {{ 'action_edit'|trans }}
                         </a>
+                            {% if not category.books|length %}
                         <a href="{{ url('category_delete', {id: category.id}) }}" title="{{ 'action_delete'|trans }}">
                             {{ 'action_delete'|trans }}
                         </a>
+                            {% endif %}
                         {% endif %}
                     </td>
                 </tr>

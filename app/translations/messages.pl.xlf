@@ -18,10 +18,6 @@
                 <source>label_content</source>
                 <target>Content</target>
             </trans-unit>
-            <trans-unit id="label_tags">
-                <source>label_tags</source>
-                <target>Tagi</target>
-            </trans-unit>
             <trans-unit id="message_empty_list">
                 <source>message_empty_list</source>
                 <target>Pusta lista.</target>
@@ -166,6 +162,78 @@
                 <source>book_create</source>
                 <target> Dodaj książkę </target>
             </trans-unit>
+            <trans-unit id="accept_borrowings">
+                <source>accept_borrowings</source>
+                <target> Czy na pewno zaakceptować to wypożyczenie? </target>
+            </trans-unit>
+             <trans-unit id="message_borrowing_accept">
+                 <source>message_borrowing_accept</source>
+                 <target> Zaakceptowano! </target>
+             </trans-unit>
+             <trans-unit id="decline_borrowings">
+                 <source>decline_borrowings</source>
+                 <target> Czy na pewno odmówić to wypożyczenie? </target>
+             </trans-unit>
+             <trans-unit id="message_borrowing_decline">
+                 <source>message_borrowing_decline</source>
+                 <target> Odmówiono! </target>
+             </trans-unit>
+             <trans-unit id="message_created_successfully">
+                 <source>message_created_successfully</source>
+                 <target> Pomyślnie utworzono! </target>
+             </trans-unit>
+             <trans-unit id="message_updated_successfully">
+                 <source>message_updated_successfully</source>
+                 <target> Pomyślnie zedytowano! </target>
+             </trans-unit>
+             <trans-unit id="message_deleted_successfully">
+                 <source>message_deleted_successfully</source>
+                 <target> Pomyślnie usunięto! </target>
+             </trans-unit>
+               <trans-unit id="label_amount">
+                   <source>label_amount</source>
+                   <target> Ilość </target>
+               </trans-unit>
+                <trans-unit id="books_title">
+                    <source>books_title</source>
+                    <target> Książki </target>
+                </trans-unit>
+                <trans-unit id="message_item_not_found">
+                    <source>message_item_not_found</source>
+                    <target> Nie znaleziono! </target>
+                </trans-unit>
+                 <trans-unit id="log_in">
+                     <source>log_in</source>
+                     <target> Logowanie </target>
+                 </trans-unit>
+                 <trans-unit id="sign_in">
+                     <source>sign_in</source>
+                     <target> Zaloguj </target>
+                 </trans-unit>
+                 <trans-unit id="message_borrowing_send">
+                     <source>message_borrowing_send</source>
+                     <target> Wypożyczenie wysłane </target>
+                 </trans-unit>
+                  <trans-unit id="category_create">
+                      <source>category_create</source>
+                      <target> Dodaj kategorię </target>
+                  </trans-unit>
+                 <trans-unit id="manage_borrowing">
+                     <source>manage_borrowing</source>
+                     <target> Zarządaj wypożyczeniami </target>
+                 </trans-unit>
+                 <trans-unit id="category_index">
+                     <source>category_index</source>
+                     <target> Kategorie </target>
+                 </trans-unit>
+                 <trans-unit id="book_index">
+                     <source>book_index</source>
+                     <target> Książki </target>
+                 </trans-unit>
+                 <trans-unit id="user_index">
+                     <source>user_index</source>
+                     <target> Użytkownicy </target>
+                 </trans-unit>
         </body>
     </file>
 </xliff>

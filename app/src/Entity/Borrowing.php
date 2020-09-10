@@ -5,11 +5,12 @@
 namespace App\Entity;
 
 use App\Repository\BorrowingRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=BorrowingRepository::class)
- *  *  @ORM\Table(name="borrowings")
+ * @ORM\Table(name="borrowings")
  */
 class Borrowing
 {
@@ -74,24 +75,22 @@ class Borrowing
     public function setBook(?Book $book): void
     {
         $this->book = $book;
-
     }
 
     /**
-     * @return \DateTimeInterface|null
+     * @return DateTimeInterface|null
      */
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
 
     /**
-     * @param \DateTimeInterface|null $createdAt
+     * @param DateTimeInterface|null $createdAt
      */
-    public function setCreatedAt(?\DateTimeInterface $createdAt): void
+    public function setCreatedAt(?DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
-
     }
 
     /**
@@ -124,7 +123,6 @@ class Borrowing
     public function setNick(?string $nick): void
     {
         $this->nick = $nick;
-
     }
 
     /**
@@ -135,23 +133,31 @@ class Borrowing
         return $this->comment;
     }
 
+    /**
+     * @param string|null $comment
+     */
     public function setComment(?string $comment): void
     {
         $this->comment = $comment;
-
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsExecuted(): ?bool
     {
         return $this->isExecuted;
     }
 
+    /**
+     * @param bool|null $isExecuted
+     *
+     * @return $this
+     */
     public function setIsExecuted(?bool $isExecuted): self
     {
         $this->isExecuted = $isExecuted;
 
         return $this;
     }
-
-
 }

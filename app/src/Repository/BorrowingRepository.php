@@ -1,9 +1,14 @@
 <?php
+/**
+ * Borrowing repository.
+ */
 
 namespace App\Repository;
 
 use App\Entity\Borrowing;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +22,10 @@ class BorrowingRepository extends ServiceEntityRepository
 {
     const PAGINATOR_ITEMS_PER_PAGE = 10;
 
+    /**
+     * BorrowingRepository constructor.
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Borrowing::class);
@@ -25,10 +34,10 @@ class BorrowingRepository extends ServiceEntityRepository
     /**
      * Save borrowing.
      *
-     * @param \App\Entity\Borrowing $borrowing Borrowing entity
+     * @param Borrowing $borrowing Borrowing entity
      *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function save(Borrowing $borrowing): void
     {
@@ -39,10 +48,10 @@ class BorrowingRepository extends ServiceEntityRepository
     /**
      * Delete borrowing.
      *
-     * @param \App\Entity\Borrowing $borrowing Borrowing entity
+     * @param Borrowing $borrowing Borrowing entity
      *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function delete(Borrowing $borrowing): void
     {
@@ -67,6 +76,7 @@ class BorrowingRepository extends ServiceEntityRepository
 
     /**
      * Get or create new query builder.
+     * @param QueryBuilder|null $queryBuilder
      *
      * @return QueryBuilder
      */

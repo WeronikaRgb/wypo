@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -29,28 +29,34 @@
         {% endif %}
         <ul class="navbar-nav">
             {% if is_granted ('ROLE_ADMIN') %}
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('user_index') }}">Users</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('user_index') }}" title="{{ 'user_index'|trans }}">
+                        {{ 'user_index'|trans }} </a>
+                </li>
             {% endif %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('book_index') }}">Books</a>
+                <a class="nav-link" href="{{ url('book_index') }}" title="{{ 'book_index'|trans }}">
+                    {{ 'book_index'|trans }} </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('category_index') }}">Categories</a>
+                <a class="nav-link" href="{{ url('category_index') }}" title="{{ 'category_index'|trans }}">
+                    {{ 'category_index'|trans }} </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('borrowing_create') }}">Create Borrowing</a>
+                <a class="nav-link" href="{{ url('borrowing_create') }}" title="{{ 'borrowing_create'|trans }}">
+                    {{ 'borrowing_create'|trans }} </a>
             </li>
             {% if is_granted ('ROLE_ADMIN') %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('manage_borrowing') }}">Manage borrowing</a>
+                    <a class="nav-link" href="{{ url('manage_borrowing') }}" title="{{ 'manage_borrowing'|trans }}">
+                        {{ 'manage_borrowing'|trans }} </a>
                 </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('category_create') }}">Create category</a>
+                <a class="nav-link" href="{{ url('category_create') }}" title="{{ 'category_create'|trans }}">
+                    {{ 'category_create'|trans }} </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('book_create') }} "title="{{ 'book_create'|trans }}">
+                <a class="nav-link" href="{{ url('book_create') }}" title="{{ 'book_create'|trans }}">
                     {{ 'book_create'|trans }} </a>
             </li>
             {% endif %}

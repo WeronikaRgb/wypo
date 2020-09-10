@@ -1,16 +1,22 @@
 <?php
 /**
- * Borrowing fixtures
+ * Borrowing fixtures.
  */
+
 namespace App\DataFixtures;
+
 use App\Entity\Borrowing;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+
 /**
- * Class BorrowingFixtures
+ * Class BorrowingFixtures.
  */
-class  BorrowingFixtures extends  AbstractBaseFixtures implements DependentFixtureInterface
+class BorrowingFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
+    /**
+     * @param ObjectManager $manager
+     */
     public function loadData(ObjectManager $manager): void
     {
         $this->createMany(10, 'borrowings', function ($i) {
@@ -27,12 +33,10 @@ class  BorrowingFixtures extends  AbstractBaseFixtures implements DependentFixtu
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getDependencies()
     {
         return [BookFixtures::class];
     }
-
-
 }

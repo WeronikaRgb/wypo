@@ -9,11 +9,13 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
+
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
     private const CONFIG_EXTS = '.{php,xml,yaml,yml}';
+
 
     public function registerBundles(): iterable
     {
@@ -25,10 +27,12 @@ class Kernel extends BaseKernel
         }
     }
 
+
     public function getProjectDir(): string
     {
         return \dirname(__DIR__);
     }
+
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
@@ -42,6 +46,7 @@ class Kernel extends BaseKernel
         $loader->load($confDir.'/{services}'.self::CONFIG_EXTS, 'glob');
         $loader->load($confDir.'/{services}_'.$this->environment.self::CONFIG_EXTS, 'glob');
     }
+
 
     protected function configureRoutes(RouteCollectionBuilder $routes): void
     {

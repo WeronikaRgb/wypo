@@ -10,6 +10,9 @@ use App\Entity\Borrowing;
 use App\Form\BorrowingType;
 use App\Service\BookService;
 use App\Service\BorrowingService;
+use DateTime;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,13 +49,12 @@ class BorrowingController extends AbstractController
     /**
      * Create action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request             HTTP request
-     * @param \App\Repository\BorrowingRepository       $borrowingRepository Borrowing repository
+     * @param Request $request HTTP request
      *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     * @return Response HTTP response
      *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws ORMException
+     * @throws OptimisticLockException
      *
      * @Route(
      *     "/create",
@@ -71,7 +73,7 @@ class BorrowingController extends AbstractController
 
             $book->setAmount($book->getAmount() - 1);
             // $borrowing->setAuthor($this->getUser());
-            $borrowing->setCreatedAt(new \DateTime());
+            $borrowing->setCreatedAt(new DateTime());
             $borrowing->setIsExecuted(false);
             $this->bookService->save($book);
             $this->borrowingService->save($borrowing);
@@ -93,8 +95,13 @@ class BorrowingController extends AbstractController
     /**
      * Accept borrowing function.
      *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @param Request   $request
+     * @param Borrowing $borrowing
+     *
+     * @return Response
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
      *
      * @Route(
      * "/{id}/accept",
@@ -128,9 +135,13 @@ class BorrowingController extends AbstractController
     /**
      * Decline borrowing.
      *
+     * @param Request   $request
+     * @param Borrowing $borrowing
+     *
      * @return Response
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
      *
      * @Route(
      * "/{id}/decline",
@@ -157,7 +168,7 @@ class BorrowingController extends AbstractController
 
             $this->addFlash('success', 'message_borrowing_decline');
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('manage_borrowing');
         }
 
         return $this->render(
@@ -179,6 +190,9 @@ class BorrowingController extends AbstractController
      *
      * )
      * @IsGranted("ROLE_ADMIN")
+     *
+     * @param Request $request
+     *
      * @return Response
      */
     public function manageBorrowing(Request $request): Response

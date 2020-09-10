@@ -21,22 +21,22 @@ class BookService
     /**
      * Book repository.
      *
-     * @var \App\Repository\BookRepository
+     * @var BookRepository
      */
     private $bookRepository;
 
     /**
      * Paginator.
      *
-     * @var \Knp\Component\Pager\PaginatorInterface
+     * @var PaginatorInterface
      */
     private $paginator;
 
     /**
      * BookService constructor.
      *
-     * @param \App\Repository\BookRepository          $bookRepository Book repository
-     * @param \Knp\Component\Pager\PaginatorInterface $paginator      Paginator
+     * @param BookRepository     $bookRepository Book repository
+     * @param PaginatorInterface $paginator      Paginator
      */
     public function __construct(BookRepository $bookRepository, PaginatorInterface $paginator)
     {
@@ -49,7 +49,7 @@ class BookService
      *
      * @param int $page Page number
      *
-     * @return \Knp\Component\Pager\Pagination\PaginationInterface Paginated list
+     * @return PaginationInterface Paginated list
      */
     public function createPaginatedList(int $page): PaginationInterface
     {
