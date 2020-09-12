@@ -18,9 +18,24 @@ use Knp\Component\Pager\PaginatorInterface;
 class BorrowingService
 {
     /**
+     * Borrowing repository.
+     *
+     * @var BorrowingRepository
+     */
+    private $borrowingRepository;
+
+    /**
+     * Paginator.
+     *
+     * @var PaginatorInterface
+     */
+    private $paginator;
+
+    /**
      * BorrowingService constructor.
-     * @param BorrowingRepository $borrowingRepository
-     * @param PaginatorInterface  $paginator
+     *
+     * @param BorrowingRepository $borrowingRepository Borrowing Repository
+     * @param PaginatorInterface  $paginator           Paginator
      */
     public function __construct(BorrowingRepository $borrowingRepository, PaginatorInterface $paginator)
     {
@@ -30,7 +45,6 @@ class BorrowingService
 
     /**
      * Created paginated list.
-     *
      * @param int $page
      *
      * @return PaginationInterface

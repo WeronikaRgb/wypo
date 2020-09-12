@@ -2,7 +2,6 @@
 /**
  * Category entity.
  */
-
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -51,6 +50,8 @@ class Category
     private $name;
 
     /**
+     * Books.
+     *
      * @ORM\OneToMany(targetEntity=Book::class, mappedBy="category")
      */
     private $books;
@@ -94,6 +95,8 @@ class Category
     }
 
     /**
+     * Get book.
+     *
      * @return Collection|Book[]
      */
     public function getBooks(): Collection
@@ -102,6 +105,8 @@ class Category
     }
 
     /**
+     * Add book.
+     *
      * @param Book $book
      *
      * @return $this
@@ -117,6 +122,8 @@ class Category
     }
 
     /**
+     * Remove book.
+     *
      * @param Book $book
      *
      * @return $this

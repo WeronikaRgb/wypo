@@ -15,6 +15,8 @@ use Doctrine\Persistence\ObjectManager;
 class BorrowingFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
+     * Load data.
+     *
      * @param ObjectManager $manager
      */
     public function loadData(ObjectManager $manager): void

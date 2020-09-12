@@ -37,6 +37,8 @@ class BorrowingType extends AbstractType
     }
 
     /**
+     * Build form.
+     *
      * @param FormBuilderInterface $builder The form builder
      * @param array                $options The options
      */
@@ -97,6 +99,8 @@ class BorrowingType extends AbstractType
     }
 
     /**
+     * Get block prefix.
+     *
      * @return string
      */
     public function getBlockPrefix(): string

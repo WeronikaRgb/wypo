@@ -47,7 +47,7 @@ class Book
      * @Assert\NotBlank
      * @Assert\Length(
      *     min="3",
-     *     max="64",
+     *     max="45",
      * )
      */
     private $title;

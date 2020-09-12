@@ -7,11 +7,11 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Form\BookType;
-use App\Repository\BookRepository;
+use App\Service\BookService;
 use DateTime;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
-use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,11 +26,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class BookController extends AbstractController
 {
     /**
+     * Book service.
+     *
+     * @var BookService
+     */
+    private $bookService;
+
+    /**
+     * BookController constructor.
+     *
+     * @param BookService $bookService Book service
+     */
+    public function __construct(BookService $bookService)
+    {
+        $this->bookService = $bookService;
+    }
+
+    /**
      * Index action.
      *
-     * @param Request            $request        HTTP request
-     * @param BookRepository     $bookRepository Book repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param Request $request HTTP request
      *
      * @return Response HTTP response
      *
@@ -40,13 +55,10 @@ class BookController extends AbstractController
      *     name="book_index",
      * )
      */
-    public function index(Request $request, BookRepository $bookRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
-        $pagination = $paginator->paginate(
-            $bookRepository->queryAll(),
-            $request->query->getInt('page', 1),
-            BookRepository::PAGINATOR_ITEMS_PER_PAGE
-        );
+        $page = $request->query->getInt('page', 1);
+        $pagination = $this->bookService->createPaginatedList($page);
 
         return $this->render(
             'book/index.html.twig',
@@ -79,8 +91,7 @@ class BookController extends AbstractController
     /**
      * Create action.
      *
-     * @param Request        $request        HTTP request
-     * @param BookRepository $bookRepository Book repository
+     * @param Request $request HTTP request
      *
      * @return Response HTTP response
      *
@@ -92,8 +103,9 @@ class BookController extends AbstractController
      *     methods={"GET", "POST"},
      *     name="book_create",
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
-    public function create(Request $request, BookRepository $bookRepository): Response
+    public function create(Request $request): Response
     {
         $book = new Book();
         $form = $this->createForm(BookType::class, $book);
@@ -101,7 +113,7 @@ class BookController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $book->setCreatedAt(new DateTime());
-            $bookRepository->save($book);
+            $this->bookService->save($book);
             $this->addFlash('success', 'message_created_successfully');
 
             return $this->redirectToRoute('book_index');
@@ -116,9 +128,8 @@ class BookController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request        $request        HTTP request
-     * @param Book           $book           Book entity
-     * @param BookRepository $bookRepository Book repository
+     * @param Request $request HTTP request
+     * @param Book    $book    Book entity
      *
      * @return Response HTTP response
      *
@@ -131,14 +142,15 @@ class BookController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="book_edit",
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
-    public function edit(Request $request, Book $book, BookRepository $bookRepository): Response
+    public function edit(Request $request, Book $book): Response
     {
         $form = $this->createForm(BookType::class, $book, ['method' => 'PUT']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $bookRepository->save($book);
+            $this->bookService->save($book);
             $this->addFlash('success', 'message_updated_successfully');
 
             return $this->redirectToRoute('book_index');
@@ -156,9 +168,8 @@ class BookController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request        $request        HTTP request
-     * @param Book           $book           Book entity
-     * @param BookRepository $bookRepository Book repository
+     * @param Request $request HTTP request
+     * @param Book    $book    Book entity
      *
      * @return Response HTTP response
      *
@@ -171,8 +182,9 @@ class BookController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="book_delete",
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, Book $book, BookRepository $bookRepository): Response
+    public function delete(Request $request, Book $book): Response
     {
         $form = $this->createForm(FormType::class, $book, ['method' => 'DELETE']);
         $form->handleRequest($request);
@@ -182,7 +194,7 @@ class BookController extends AbstractController
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $bookRepository->delete($book);
+            $this->bookService->delete($book);
             $this->addFlash('success', 'message_deleted_successfully');
 
             return $this->redirectToRoute('book_index');

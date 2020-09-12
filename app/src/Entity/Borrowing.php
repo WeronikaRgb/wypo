@@ -2,15 +2,20 @@
 /**
  * Borrowing entity.
  */
+
 namespace App\Entity;
 
 use App\Repository\BorrowingRepository;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BorrowingRepository::class)
  * @ORM\Table(name="borrowings")
+ *
+ *@UniqueEntity(fields={"nick"})
  */
 class Borrowing
 {
@@ -18,7 +23,6 @@ class Borrowing
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     *
      */
     private $id;
 
@@ -27,7 +31,6 @@ class Borrowing
      */
     private $book;
 
-
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
@@ -35,6 +38,9 @@ class Borrowing
 
     /**
      * @ORM\Column(type="string", length=45, nullable=true)
+     *
+     * @Assert\Type(type="string")
+     * @Assert\NotBlank
      */
     private $email;
 

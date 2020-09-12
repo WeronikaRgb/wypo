@@ -5,7 +5,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Book;
 use App\Entity\Borrowing;
 use App\Form\BorrowingType;
 use App\Service\BookService;
@@ -32,11 +31,15 @@ class BorrowingController extends AbstractController
      * @var BookService
      */
     private $bookService;
+    /**
+     * Borrowing service.
+     *
+     * @var BorrowingService
+     */
     private $borrowingService;
 
     /**
      * BorrowingController constructor.
-     *
      * @param BookService      $bookService
      * @param BorrowingService $borrowingService
      */
@@ -109,6 +112,7 @@ class BorrowingController extends AbstractController
      * name="borrowing_accept",
      * requirements={"id": "[1-9]\d*"}
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
     public function accept(Request $request, Borrowing $borrowing): Response
     {
@@ -149,6 +153,7 @@ class BorrowingController extends AbstractController
      * name="borrowing_decline",
      * requirements={"id": "[1-9]\d*"}
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
     public function decline(Request $request, Borrowing $borrowing): Response
     {

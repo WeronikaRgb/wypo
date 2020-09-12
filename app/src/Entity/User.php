@@ -2,14 +2,16 @@
 /**
  * User entity.
  */
-
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Class user.
+ *
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(
  *     name="users",
@@ -65,6 +67,8 @@ class User implements UserInterface
      *     length=180,
      *     unique=true,
      * )
+     * @Assert\Type(type="string")
+     * @Assert\NotBlank
      */
     private $email;
 

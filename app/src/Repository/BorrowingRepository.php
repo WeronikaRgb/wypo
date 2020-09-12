@@ -13,6 +13,9 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ *
+ * Class BorrowingRepository.
+ *
  * @method Borrowing|null find($id, $lockMode = null, $lockVersion = null)
  * @method Borrowing|null findOneBy(array $criteria, array $orderBy = null)
  * @method Borrowing[]    findAll()
@@ -20,6 +23,15 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BorrowingRepository extends ServiceEntityRepository
 {
+    /**
+     * Items per page.
+     *
+     * Use constants to define configuration options that rarely change instead
+     * of specifying them in app/config/config.yml.
+     * See https://symfony.com/doc/current/best_practices.html#configuration
+     *
+     * @constant int
+     */
     const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
@@ -76,9 +88,11 @@ class BorrowingRepository extends ServiceEntityRepository
 
     /**
      * Get or create new query builder.
+     *
      * @param QueryBuilder|null $queryBuilder
      *
      * @return QueryBuilder
+     *
      */
     public function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {

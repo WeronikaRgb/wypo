@@ -1,11 +1,15 @@
 <?php
-
+/**
+ * Migration.
+ */
 declare(strict_types=1);
 /**
  * Migration.
  */
+
 namespace DoctrineMigrations;
 
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
@@ -15,22 +19,26 @@ use Doctrine\Migrations\AbstractMigration;
 final class Version20200618192728 extends AbstractMigration
 {
     /**
+     * Get description.
+     *
      * @return string
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return '';
     }
 
     /**
+     * Up.
+     *
      * @param Schema $schema
      *
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+        $this->abortIf('mysql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE borrowings (id INT AUTO_INCREMENT NOT NULL, book_id INT DEFAULT NULL, INDEX IDX_7547A7B416A2B381 (book_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE borrowings ADD CONSTRAINT FK_7547A7B416A2B381 FOREIGN KEY (book_id) REFERENCES books (id)');
@@ -39,14 +47,16 @@ final class Version20200618192728 extends AbstractMigration
     }
 
     /**
+     * Down.
+     *
      * @param Schema $schema
      *
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+        $this->abortIf('mysql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE borrowing (id INT AUTO_INCREMENT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('DROP TABLE borrowings');

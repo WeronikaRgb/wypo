@@ -72,7 +72,6 @@ class BookService
 
     /**
      * Query builder for only available books.
-     *
      * @return QueryBuilder
      */
     public function getAvailableBooks(): QueryBuilder
